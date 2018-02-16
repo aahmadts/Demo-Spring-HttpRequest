@@ -26,14 +26,15 @@ public class PersonController {
 
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(http_conn.getInputStream()));
             System.out.println(String.valueOf(bufferRead));
-            String body = "";
+            StringBuilder stringBuilder = new StringBuilder();
+
             for (String line = bufferRead.readLine(); line != null; line = bufferRead.readLine()) {
                 System.out.println(line);
-                body = body + line;
+                stringBuilder.append(line);
             }
 
             bufferRead.close();
-            return body;
+            return stringBuilder.toString();
 
         } catch (Exception error ){
             System.out.println(error.getMessage());;
